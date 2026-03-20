@@ -1,6 +1,8 @@
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://web-bytech-be-production.up.railway.app';
+
 export const getProducts = async () => {
     try {
-        const res = await fetch('http://localhost:3001/products', {
+        const res = await fetch(`${API_URL}/products`, {
             cache: 'no-store', // Để luôn lấy dữ liệu mới nhất từ database
         });
 
@@ -14,7 +16,7 @@ export const getProducts = async () => {
 };
 
 export const getProductDetail = async (slug) => {
-    const res = await fetch(`http://localhost:3001/products/${slug}`, { cache: 'no-store' });
+    const res = await fetch(`${API_URL}/products/${slug}`, { cache: 'no-store' });
     if (!res.ok) return null;
     return res.json();
 };
